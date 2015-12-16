@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let ApiSchema = new Schema({
-    name: {type: String, required: true},
-    type: {type: String, required: true},
-    desc: {type: String, required: true},
+    name: {type: String, required: true, unique: true},
+    type: {type: String},
+    desc: {type: String},
     request: {type: String}
 });
 

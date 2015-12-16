@@ -21,5 +21,4 @@ mongoose.connect(config.db, (err) => {
 /**
  * exports
  */
-exports.User = require('./user');
 exports.Api = require('./api');
