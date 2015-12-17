@@ -1,6 +1,6 @@
 {
-  "name": "rpi",
-  "version": "1.0.0",
+  "name": "routerpi",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
