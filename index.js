@@ -3,13 +3,29 @@
 const api = require('./proxy/api');
 const path = require('path');
 const express = require('express');
+const rpiApp = express();
+const http = require('http');
+const bodyParser = require('body-parser');
 
 
-function addRouter(app) {
+rpiApp.set('views', path.join(__dirname, 'views'));
+rpiApp.set('view engine', 'ejs');
+rpiApp.use(express.static(path.join(__dirname, 'public')));
+rpiApp.use(bodyParser.json());
+rpiApp.use(bodyParser.urlencoded({ extended: false }));
 
+rpiApp.use('/', require('./routes/web'));
+rpiApp.use('/api', require('./routes/api'));
+
+rpiApp.listen(3001);
+
+//http.createServer(rpiApp).listen(3005);
+
+
+function addRouter(host, app) {
+    console.log(app.listen);
     /**
      * define name and type
-     * @type {Array}
      */
     let router = app._router.stack;
     for (let i = 0; i < router.length; i++) {
@@ -21,7 +37,7 @@ function addRouter(app) {
                 let childName = childRouter[j].route.path;
 
                 // url full name
-                let fullName = path.join(rootName, childName);
+                let fullName =  host + path.join(rootName, childName);
                 let methodObj = childRouter[j].route.methods;
 
                 //url type
@@ -31,7 +47,7 @@ function addRouter(app) {
                 }
                 console.log(fullName +' : '+type);
                 api.addApi({name: fullName, type: type}).catch(err => {
-                    console.log(err);
+                    //console.log(err);
                 });
             }
         }
@@ -47,10 +63,7 @@ function addRouter(app) {
     //        //console.log(err);
     //    });
     //}
-    app.set('views', path.join(__dirname, 'views'));
-    app.use(express.static(path.join(__dirname, 'public')));
-    app.use('/', require('./routes/web'));
-    app.use('/api', require('./routes/api'));
+
 }
 
 exports.addRouter = addRouter;

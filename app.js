@@ -10,7 +10,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const trood = require('./index');
+const rpi = require('./index');
 
 const app = express();
 
@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-trood.addRouter(app, require('./routes/api'));
+
 
 // error handlers
 
@@ -64,4 +64,7 @@ app.use(function(err, req, res, next) {
 });
 
 
+app.listen(3000);
 module.exports = app;
+
+rpi.addRouter('http://localhost:3000', app);

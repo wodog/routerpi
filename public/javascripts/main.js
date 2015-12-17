@@ -106,7 +106,7 @@ $(function () {
             request[key] = value;
         });
 
-        if (name.match(':')) {
+        if (name.match(':[a-zA-Z]')) {
             var param_name = name.split(':');
             if (!request[param_name[1]]) {
                 return false;
