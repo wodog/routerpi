@@ -119,7 +119,7 @@ $(function () {
         console.log(name);
         console.log(request);
 
-        url = '/api' + name;
+        url = name;
         $.ajax({
             type: type,
             url: url,
