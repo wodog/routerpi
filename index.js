@@ -1,11 +1,12 @@
 'use strict'
 
-const api = require('./proxy/api');
+
 const path = require('path');
 const express = require('express');
 const rpiApp = express();
 const http = require('http');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 
 rpiApp.set('views', path.join(__dirname, 'views'));
@@ -14,26 +15,28 @@ rpiApp.use(express.static(path.join(__dirname, 'public')));
 rpiApp.use(bodyParser.json());
 rpiApp.use(bodyParser.urlencoded({extended: false}));
 
-let version = Date.now();
 
-rpiApp.get('/', (req, res, next) => {
-    api.getApis().then(data => {
-        console.log(version);
-        res.render('rpi_index', {data: data, title: 'Api Control System', version: version});
-    });
-});
-rpiApp.use('/api', require('./routes/api'));
-
-rpiApp.listen(3001);
 
 //http.createServer(rpiApp).listen(3005);
 
 
-module.exports = function (host, app) {
+module.exports = function (options, app) {
+
+    /**
+     * read and write options to config.json
+     */
+    console.log(JSON.stringify(options));
+    fs.writeFileSync(path.join(__dirname, 'config.json'), JSON.stringify(options));
+
+    const api = require('./proxy/api');
+
+    let version = Date.now();
+
     /**
      * define name and type
      */
     let router = app._router.stack;
+
 
     for (let i = 0; i < router.length; i++) {
         if (router[i].name === 'router') {
@@ -44,7 +47,7 @@ module.exports = function (host, app) {
                 let childName = childRouter[j].route.path;
 
                 // url full name
-                let fullName = host + path.join(rootName, childName);
+                let fullName = options.host + path.join(rootName, childName);
                 let methodObj = childRouter[j].route.methods;
 
                 //url type
@@ -60,4 +63,16 @@ module.exports = function (host, app) {
             }
         }
     }
+
+
+
+    rpiApp.get('/', (req, res, next) => {
+        api.getApis().then(data => {
+            console.log(version);
+            res.render('rpi_index', {data: data, title: 'Api Control System', version: version});
+        });
+    });
+    rpiApp.use('/api', require('./routes/api'));
+
+    rpiApp.listen(3001);
 }
