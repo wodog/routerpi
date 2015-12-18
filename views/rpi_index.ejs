@@ -23,8 +23,9 @@
     <div id="api_wrap">
         <div class="row">
             <div class="col-xs-3">Name</div>
-            <div class="col-xs-3">Type</div>
+            <div class="col-xs-2">Type</div>
             <div class="col-xs-5">Desc</div>
+            <div class="col-xs-1">Version</div>
             <div class="col-xs-1">Tool</div>
         </div>
         <div id="api_view">
@@ -34,16 +35,19 @@
                     <div class="col-xs-3 api_view_name">
                         <%= data[i].name %>
                     </div>
-                    <div class="col-xs-3 api_view_type">
+                    <div class="col-xs-2 api_view_type">
                         <%= data[i].type %>
                     </div>
                     <div class="col-xs-5 api_view_desc">
                         <%= data[i].desc %>
                     </div>
+                    <div class="col-xs-1 api_view_version">
+                        <%= data[i].version == version ? 'Approve' : 'Deprecate'%>
+                    </div>
                     <div class="col-xs-1">
-                        <span class="glyphicon glyphicon-pencil api_update" api_id="<%= data[i]._id %>"></span>
+                        <span class="glyphicon glyphicon-remove api_del" api_id="<%= data[i]._id %>"></span>
                         <span class="glyphicon glyphicon-send api_view_send"></span>
-                        <!--<span class="glyphicon glyphicon-remove api_del" api_id="<%= data[i]._id %>"></span>-->
+                        <span class="glyphicon glyphicon-pencil api_update" api_id="<%= data[i]._id %>"></span>
                     </div>
                 </div>
                 <div class="api_view_foot">

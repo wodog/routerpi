@@ -58,3 +58,14 @@ exports.updateApi = (id, api_date) => {
         });
     });
 }
+
+exports.updateApiByCondition = (condition, api_date) => {
+    return new Promise((resolve, reject) => {
+        Api.update(condition, api_date, err => {
+            if (err) {
+                reject(err);
+            }
+            resolve();
+        });
+    });
+}
