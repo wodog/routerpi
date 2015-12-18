@@ -22,7 +22,7 @@ rpiApp.listen(3001);
 //http.createServer(rpiApp).listen(3005);
 
 
-function addRouter(host, app) {
+module.exports = function (host, app) {
     console.log(app.listen);
     /**
      * define name and type
@@ -65,5 +65,3 @@ function addRouter(host, app) {
     //}
 
 }
-
-exports.addRouter = addRouter;
