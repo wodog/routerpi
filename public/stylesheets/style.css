@@ -1,8 +1,14 @@
-body {
+body{
+  background-color: rgba(162, 189, 177, 0.29)
+}
+#api_view{
+  background-color: rgba(231, 232, 241, 0.29)
+}
+/*body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
-}
+}*/
