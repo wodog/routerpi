@@ -28,12 +28,14 @@
 
     <!-- api view -->
     <div id="api_wrap" class="panel panel-primary">
-      <div class="row panel-heading">
-        <div class="col-xs-3">Name</div>
-        <div class="col-xs-2">Type</div>
-        <div class="col-xs-5">Desc</div>
-        <div class="col-xs-1">Version</div>
-        <div class="col-xs-1">Tool</div>
+      <div class=" panel-heading ">
+        <div class="row">
+          <div class="col-xs-3">Name</div>
+          <div class="col-xs-2">Type</div>
+          <div class="col-xs-5">Desc</div>
+          <div class="col-xs-1">Version</div>
+          <div class="col-xs-1">Tool</div>
+        </div>
       </div>
       <div id="api_view" class="panel-body">
         <% for(var i = 0; i < data.length; i++) { %>
@@ -105,11 +107,11 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div id="update_name" class="col-xs-4">Name:
-                <input disabled>
+              <div id="update_name" class="col-xs-8">Name:
+                <input class="form-control" disabled>
               </div>
-              <div id="update_type" class="col-xs-2">Type:
-                <select disabled>
+              <div id="update_type" class="col-xs-4">Type:
+                <select class="form-control" disabled>
                   <option value="GET">GET</option>
                   <option value="POST">POST</option>
                   <option value="PUT">PUT</option>
@@ -118,7 +120,7 @@
               </div>
               <div class="col-xs-12">
                 <div id="update_desc">Desc:
-                  <textarea style="width:100%"></textarea>
+                  <textarea class="form-control" rows="3"></textarea>
                 </div>
               </div>
               <div>
