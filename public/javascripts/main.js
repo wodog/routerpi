@@ -43,7 +43,7 @@ $(function () {
         $('#add_btn button:eq(0)').css('display', 'block');
         $('#add_btn button:eq(1)').css('display', 'none');
         $('#add_btn button:eq(2)').css('display', 'none');
-    })
+    });
 
 
     /**
@@ -62,7 +62,7 @@ $(function () {
             success: function (data) {
                 location.reload();
             }
-        })
+        });
     });
 
 
@@ -78,7 +78,7 @@ $(function () {
             html = $('<div class="row"><div class="col-xs-6">Key: <input></div> <div class="col-xs-6"> Value: <input></div></div>');
         }
         $(this).parent().find('.api_view_request').append(html);
-    })
+    });
 
     /**
      * minus event
@@ -127,7 +127,7 @@ $(function () {
             data: request,
             success: function (data) {
                 console.log(data);
-                var html = $('<div>' + JSON.stringify(data) + '</div>');
+                var html = $('<pre>' + JSON.stringify(data, null, '  ') + '</pre>');
                 $(that).parent().parent().parent().find('.api_view_response').empty();
                 $(that).parent().parent().parent().find('.api_view_response').append(html);
             }
@@ -165,7 +165,7 @@ $(function () {
 
                 $('#modal_update').modal();
             }
-        })
+        });
 
 
         //var name = $($(this).parent().siblings()[0]).text().trim();
@@ -220,7 +220,7 @@ $(function () {
             type: type,
             desc: desc,
             request: JSON.stringify(request)
-        }
+        };
 
         return result;
     }

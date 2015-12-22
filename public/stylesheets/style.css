@@ -1,5 +1,5 @@
 body{
-  background-color: rgba(162, 189, 177, 0.29)
+  /*background-color: rgba(162, 189, 177, 0.29)*/
 }
 #api_view{
   background-color: rgba(231, 232, 241, 0.29)
@@ -12,3 +12,37 @@ body{
 a {
   color: #00B7FF;
 }*/
+
+
+.header{
+
+  color: #fff;
+  font-size:20px;
+  background-color:#0275d8;
+  border-bottom:1px solid #c3c3c3;
+  padding: 20px;
+}
+
+.content{
+  margin: 16px auto;
+}
+
+
+.api_view_requests{
+  background-color: #F8F8F8;
+}
+.api_view_response{
+  background-color: #F8F8F8;
+}
+
+pre{
+  margin:0;
+}
+
+.foot{
+  padding: 18px;
+  color: #dadada;
+  font-size: 14px;
+  text-align: center;
+  background-color: #727171;
+}

@@ -13,135 +13,157 @@
 </head>
 
 <body>
-  <div class="container">
 
 
+
+
+
+  <!-- header -->
+  <div class="header">
     <!-- index header -->
-    <div id="header" class="text-center page-header">
-      <h1>
+    <div id="header" class="text-center">
+      <!-- <div class="container"> -->
+        Welcome to
         <%= title %>
-          <small>Welcome to
-            <%= title %>
-          </small>
-      </h1>
+      <!-- </div> -->
     </div>
+  </div>
 
-    <!-- api view -->
-    <div id="api_wrap" class="panel panel-primary">
-      <div class=" panel-heading ">
-        <div class="row">
-          <div class="col-xs-3">Name</div>
-          <div class="col-xs-2">Type</div>
-          <div class="col-xs-5">Desc</div>
-          <div class="col-xs-1">Version</div>
-          <div class="col-xs-1">Tool</div>
-        </div>
+  <div class="content">
+    <div class="container">
+
+      <!-- navbar -->
+      <!-- <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <a class="navbar-brand " href="#">
+          <%= title %>
+        </a>
       </div>
-      <div id="api_view" class="panel-body">
-        <% for(var i = 0; i < data.length; i++) { %>
-          <div class="api_view_content" style="margin-bottom:30px;">
-            <div class="row api_view_body alert alert-info">
-              <div class="col-xs-3 api_view_name">
-                <%= data[i].name %>
-              </div>
-              <div class="col-xs-2 api_view_type">
-                <%= data[i].type %>
-              </div>
-              <div class="col-xs-5 api_view_desc">
-                <%= data[i].desc %>
-              </div>
-              <div class="col-xs-1 api_view_version">
-                <%= data[i].version == version ? 'Approve' : 'Deprecate'%>
-              </div>
-              <div class="col-xs-1">
-                <!-- <span class="glyphicon glyphicon-remove api_del" api_id="<%= data[i]._id %>"></span> -->
-                <span class="glyphicon glyphicon-pencil api_update" api_id="<%= data[i]._id %>"></span>
-                <span class="glyphicon glyphicon-send api_view_send"></span>
-              </div>
-            </div>
-            <div class="api_view_foot alert ">
-              <div class="api_view_request panel panel-default">
-                <div class="panel-heading">请求参数 : </div>
-                <% if(data[i].request){ %>
-                  <% var request = JSON.parse(data[i].request) %>
-                    <% for(var j in request){ %>
-                      <div class="row">
-                        <div class="col-xs-offset-1 col-xs-3">
-                          Key:
-                          <input class="" id="keys" value="<%= j %>" disabled>
-                        </div>
-                        <div class="col-xs-3">Value:
-                          <input class="" value="<%= request[j] %>">
-                        </div>
-                      </div>
-                      <% } %>
-                        <% } %>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">响应结果 : </div>
-                <div class="api_view_response "></div>
-              </div>
-              <!--<button class="glyphicon glyphicon-plus api_view_add"></button>-->
-              <!--<button class="glyphicon glyphicon-minus api_view_minus"></button>-->
+    </nav> -->
 
-            </div>
-            <hr></hr>
-          </div>
-          <% } %>
-      </div>
-    </div>
-
-
-    <div id="add_btn">
-      <button class="btn btn-default" style="display:none">Add</button>
-      <button class="btn btn-default" style="display:none">Confirm</button>
-      <button class="btn btn-default" style="display:none">Cancel</button>
-    </div>
-
-    <!-- update modal -->
-    <div class="modal fade" id="modal_update">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4>Api Update</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div id="update_name" class="col-xs-8">Name:
-                <input class="form-control" disabled>
-              </div>
-              <div id="update_type" class="col-xs-4">Type:
-                <select class="form-control" disabled>
-                  <option value="GET">GET</option>
-                  <option value="POST">POST</option>
-                  <option value="PUT">PUT</option>
-                  <option value="DELETE">DELTE</option>
-                </select>
-              </div>
-              <div class="col-xs-12">
-                <div id="update_desc">Desc:
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
-              </div>
-              <div>
-                <div id="update_id" style="display:none">
-                  <input>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 api_view_request"></div>
-              <div class="col-xs-1 glyphicon glyphicon-plus api_view_add"></div>
-              <div class="col-xs-1 glyphicon glyphicon-minus api_view_minus"></div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button id="api_update_btn" class="btn btn-primary">Update</button>
-            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+      <!-- api view -->
+      <div id="api_wrap" class="panel panel-primary">
+        <div class=" panel-heading ">
+          <div class="row">
+            <div class="col-xs-3">Name</div>
+            <div class="col-xs-2">Type</div>
+            <div class="col-xs-5">Desc</div>
+            <div class="col-xs-1">Version</div>
+            <div class="col-xs-1">Tool</div>
           </div>
         </div>
+        <div id="api_view" class="panel-body">
+          <% for(var i = 0; i < data.length; i++) { %>
+            <div class="api_view_content" style="margin-bottom:30px;">
+              <div class="row api_view_body alert alert-info">
+                <div class="col-xs-3 api_view_name">
+                  <%= data[i].name %>
+                </div>
+                <div class="col-xs-2 api_view_type">
+                  <%= data[i].type %>
+                </div>
+                <div class="col-xs-5 api_view_desc">
+                  <%= data[i].desc %>
+                </div>
+                <div class="col-xs-1 api_view_version">
+                  <%= data[i].version == version ? 'Approve' : 'Deprecate'%>
+                </div>
+                <div class="col-xs-1">
+                  <!-- <span class="glyphicon glyphicon-remove api_del" api_id="<%= data[i]._id %>"></span> -->
+                  <span class="glyphicon glyphicon-pencil api_update" api_id="<%= data[i]._id %>"></span>
+                  <span class="glyphicon glyphicon-send api_view_send"></span>
+                </div>
+              </div>
+              <div class="api_view_foot alert ">
+                <div class="api_view_request panel panel-default">
+                  <div class="panel-heading ">请求参数 : </div>
+                  <div class="api_view_requests">
+                    <% if(data[i].request){ %>
+                      <% var request = JSON.parse(data[i].request) %>
+                        <% for(var j in request){ %>
+                          <div class="row ">
+                            <div class="col-xs-offset-1 col-xs-3">
+                              Key:
+                              <input class="" id="keys" value="<%= j %>" disabled>
+                            </div>
+                            <div class="col-xs-3">Value:
+                              <input class="" value="<%= request[j] %>">
+                            </div>
+                          </div>
+                          <% } %>
+                            <% } %>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">响应结果 : </div>
+                  <div class="api_view_response "></div>
+                </div>
+                <!--<button class="glyphicon glyphicon-plus api_view_add"></button>-->
+                <!--<button class="glyphicon glyphicon-minus api_view_minus"></button>-->
+
+              </div>
+              <hr></hr>
+            </div>
+            <% } %>
+        </div>
+      </div>
+
+
+      <div id="add_btn">
+        <button class="btn btn-default" style="display:none">Add</button>
+        <button class="btn btn-default" style="display:none">Confirm</button>
+        <button class="btn btn-default" style="display:none">Cancel</button>
+      </div>
+
+      <!-- update modal -->
+      <div class="modal fade" id="modal_update">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4>Api Update</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div id="update_name" class="col-xs-8">Name:
+                  <input class="form-control" disabled>
+                </div>
+                <div id="update_type" class="col-xs-4">Type:
+                  <select class="form-control" disabled>
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELTE</option>
+                  </select>
+                </div>
+                <div class="col-xs-12">
+                  <div id="update_desc">Desc:
+                    <textarea class="form-control" rows="3"></textarea>
+                  </div>
+                </div>
+                <div>
+                  <div id="update_id" style="display:none">
+                    <input>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 api_view_request"></div>
+                <div class="col-xs-1 glyphicon glyphicon-plus api_view_add"></div>
+                <div class="col-xs-1 glyphicon glyphicon-minus api_view_minus"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="api_update_btn" class="btn btn-primary">Update</button>
+              <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <!-- footer -->
+  <div class="foot">
+    <p>Copyright&nbsp;© 2015－2015 Trend Wood. All Rights Reserved.</p>
   </div>
 </body>
 
