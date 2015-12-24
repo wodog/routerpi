@@ -14,14 +14,20 @@ add below code in your app.js
 
 ```javascript
 var routerpi = require('routerpi');
-...
-routerpi(options, express_app);
+
+app.use(routerpi(
+  (options)
+));
+
+//....
+
+routerpi.parse(app);
 
 /*
- * routerpi({
+ * options = {
  *   host:'http://localhost:3000',
  *   db: 'mongodb://121.42.62.149:32769/troo'
- * }, app);
+ * };
  */
 ```
 
