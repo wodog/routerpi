@@ -61,6 +61,11 @@ exports.parse = function(app) {
       for (let j = 0; j < childRouter.length; j++) {
         let childName = childRouter[j].route.path;
 
+        // If the childName is an Array
+        if(typeof childName !== 'string') {
+            childName = childName.join('/');
+        }
+
         // url full name
         let fullName = _options.host + path.join(rootName, childName);
         console.log(`_options.host is ${_options.host}`);
@@ -89,6 +94,9 @@ exports.parse = function(app) {
     }
   }
 
+  /**
+   * port=3001 main page
+   */
   rpiApp.get('/', (req, res, next) => {
     api.getApis().then(data => {
       console.log(version);
@@ -99,7 +107,12 @@ exports.parse = function(app) {
       });
     });
   });
+
+  /**
+   * api's Api Router
+   */
   rpiApp.use('/api', require('./routes/api'));
+
 
   rpiApp.listen(3001);
 }
