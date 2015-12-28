@@ -46,6 +46,11 @@ module.exports = function (options, app) {
             for (let j = 0; j < childRouter.length; j++) {
                 let childName = childRouter[j].route.path;
 
+                // If the childName is an Array
+                if(typeof childName !== 'string') {
+                    childName = childName.join('/');
+                }
+
                 // url full name
                 let fullName = options.host + path.join(rootName, childName);
                 let methodObj = childRouter[j].route.methods;
