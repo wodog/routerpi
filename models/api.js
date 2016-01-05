@@ -1,7 +1,7 @@
 'use strict'
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const db = require('./index').db;
+const Schema = require('mongoose').Schema;
 
 let ApiSchema = new Schema({
     name: {type: String, required: true},
@@ -14,4 +14,4 @@ let ApiSchema = new Schema({
 ApiSchema.index({name: 1});
 ApiSchema.index({name: 1, type: 1}, {unique: true});
 
-module.exports = mongoose.model('Api', ApiSchema);
+module.exports = db.model('Api', ApiSchema);

@@ -20,7 +20,7 @@ routerpi(options, express_app);
 /*
  * routerpi({
  *   host:'http://localhost:3000',
- *   db: 'mongodb://121.42.62.149:32769/troo'
+ *   db: 'mongodb://127.0.0.1/trood'
  * }, app);
  */
 ```
