@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 
 const path = require('path');
@@ -59,15 +59,15 @@ module.exports = function(options, app) {
         }
 
         // 获取 api name
-        apiName = _options.host + path.join(rootName, childName);
+        apiName = options.host + path.join(rootName, childName);
         // 获取 method name
         methodName = childRouter.route.stack[0].method.toUpperCase();
       });
     } else if (router.name === 'bound dispatch') {
       if (typeof router.route.path === 'object') {
-        apiName = _options.host + path.join(router.route.path.join('/'));
+        apiName = options.host + path.join(router.route.path.join('/'));
       } else {
-        apiName = _options.host + path.join(router.route.path);
+        apiName = options.host + path.join(router.route.path);
       }
 
       methodName = router.route.stack[0].method.toUpperCase();
@@ -111,4 +111,4 @@ module.exports = function(options, app) {
   rpiApp.use('/api', require('./routes/api'));
 
   rpiApp.listen(3001);
-}
+};

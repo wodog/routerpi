@@ -87,9 +87,11 @@ $(function() {
   });
 
   /**
-   * send event
+   * 发送请求事件
    */
-  $('.api_view_send').on('click', function() {
+  $('.api_view_send').on('click', function(event) {
+    event.stopPropagation();
+
     var that = this;
     var name = $(this).parent().parent().find('.api_view_name').text().trim();
     var type = $(this).parent().parent().find('.api_view_type').text().trim();
@@ -134,14 +136,27 @@ $(function() {
         }
         $(that).parent().parent().parent().find('.api_view_response').empty();
         $(that).parent().parent().parent().find('.api_view_response').append(html);
+
+        $(that).parents('.api_view_body').removeClass('alert-danger');
+        $(that).parents('.api_view_body').addClass('alert-info');
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        var html = $('<span>' + textStatus + ': ' + errorThrown + '</span>');
+        $(that).parents().parent().parent().find('.api_view_response').empty();
+        $(that).parents().parent().parent().find('.api_view_response').append(html);
+
+        $(that).parents('.api_view_body').removeClass('alert-info');
+        $(that).parents('.api_view_body').addClass('alert-danger');
       }
     });
   });
 
   /**
-   * go in update
+   * 进入编辑面板
    */
-  $('.api_update').on('click', function() {
+  $('.api_update').on('click', function(event) {
+    event.stopPropagation();
+
     /**
      * get value
      * @type {*|jQuery}
@@ -280,5 +295,12 @@ $(function() {
   (function() {
     $('.api_view_send').trigger('click');
   })();
+
+  /**
+   * 绑定点击隐藏或者展开详情面板
+   */
+  $('.api_view_body').on('click', function(e) {
+    $(this).siblings('.api_view_foot').toggle(150);
+  });
 
 });
