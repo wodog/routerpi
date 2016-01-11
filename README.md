@@ -14,15 +14,18 @@ add below code in your app.js
 
 ```javascript
 var routerpi = require('routerpi');
+var cors = require('cors');
+
 ...
+
 routerpi(options, express_app);
 
 /*
- * routerpi({
- *   host:'http://localhost:3000',
- *   db: 'mongodb://127.0.0.1/trood'
- * }, app);
- */
+  routerpi({
+    host:'http://localhost:3000',
+    db: 'mongodb://127.0.0.1/trood'
+  }, app);
+ /
 ```
 
 and you can access http://localhost:3001

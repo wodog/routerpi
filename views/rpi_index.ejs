@@ -19,18 +19,21 @@
 
 
   <!-- header -->
-  <div class="header">
+  <div class="navbar navbar-inverse" >
     <!-- index header -->
-    <div id="header" class="text-center">
-      <!-- <div class="container"> -->
-      Welcome to
-      <%= title %>
-        <!-- </div> -->
+    <div id="header" class="container">
+      <a class="navbar-brand" href="#">
+        <%= title %>
+      </a>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">关于</a></li>
+        <li><a href="">留言</a></li>
+      </ul>
     </div>
   </div>
 
   <div class="content">
-    <div class="container">
+    <div class="container-fluid">
 
       <!-- navbar -->
       <!-- <nav class="navbar navbar-default navbar-fixed-bottom">

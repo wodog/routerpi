@@ -141,9 +141,9 @@ $(function() {
         $(that).parents('.api_view_body').addClass('alert-info');
       },
       error: function(jqXHR, textStatus, errorThrown) {
-        var html = $('<span>' + textStatus + ': ' + errorThrown + '</span>');
-        $(that).parents().parent().parent().find('.api_view_response').empty();
-        $(that).parents().parent().parent().find('.api_view_response').append(html);
+        var html = $('<pre>' + textStatus + ': ' + errorThrown + '</pre>');
+        $(that).parent().parent().parent().find('.api_view_response').empty();
+        $(that).parent().parent().parent().find('.api_view_response').append(html);
 
         $(that).parents('.api_view_body').removeClass('alert-info');
         $(that).parents('.api_view_body').addClass('alert-danger');
