@@ -110,12 +110,11 @@ $(function() {
     if (name.match(/:[a-zA-Z]/)) {
       var index = name.indexOf(name.match(/:[a-zA-Z]/).join());
       var param_name = name.substring(index + 1);
-      if (!request[param_name]) {
-        return false;
+      if (request[param_name]) {
+        var acture_param_name = request[param_name];
+        delete request[param_name];
+        name = name.substring(0, index) + acture_param_name;
       }
-      var acture_param_name = request[param_name];
-      delete request[param_name];
-      name = name.substring(0, index) + acture_param_name;
     }
 
     console.log(name);
