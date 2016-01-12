@@ -60,7 +60,7 @@ $(function() {
       type: 'GET',
       url: '/api/delete?_id=' + _id,
       success: function(data) {
-        location.reload();
+        $(that).parents('.api_view_content').remove();
       }
     });
   });
@@ -180,8 +180,7 @@ $(function() {
             //$('#modal_update .api_view_request .row ')
           }
         }
-
-        $('#modal_update').modal();
+        $('#modal_update').modal('show');
       }
     });
 
@@ -210,13 +209,12 @@ $(function() {
       url: url,
       data: data,
       success: function() {
-        location.reload();
-
+        $('#modal_update').modal('hide');
       }
     });
   });
 
-  $('#fold').on('click', function(){
+  $('#fold').on('click', function() {
     $('.api_view_foot').toggle(150);
   });
 
