@@ -217,6 +217,10 @@ $(function() {
     });
   });
 
+  $('#fold').on('click', function(){
+    $('.api_view_foot').toggle(150);
+  });
+
   function getUpdateModalData(update_btn) {
     var name = $(update_btn).parent().parent().find('#update_name input').val();
     var type = $(update_btn).parent().parent().find('#update_type select').val();

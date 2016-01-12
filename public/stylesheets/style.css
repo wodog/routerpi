@@ -54,15 +54,37 @@ pre{
 #backtop a { /* back to top button */
 	position: fixed;
 	bottom: 50px; /* 小按钮到浏览器底边的距离 */
-	right: 20px; /* 小按钮到浏览器右边框的距离 */
+	right: 5px; /* 小按钮到浏览器右边框的距离 */
 	color: #333; /* 小按钮中文字的颜色 */
 	background-color: rgba(212, 212, 212, 0.5); /* 小按钮底色 */
 	padding: 10px; /* 小按钮中文字到按钮边缘的距离 */
-	border-radius: 4px; /* 小按钮圆角的弯曲程度（半径）*/
 	text-decoration: none;
 }
 
 #backtop a:hover { /* 小按钮上有鼠标悬停时 */
 	background-color: #333; /* 小按钮的底色 */
 	color: #fff; /* 文字颜色 */
+}
+
+#fold a { /* back to top button */
+	position: fixed;
+	bottom: 90px; /* 小按钮到浏览器底边的距离 */
+	right: 5px; /* 小按钮到浏览器右边框的距离 */
+	color: #333; /* 小按钮中文字的颜色 */
+	background-color: rgba(212, 212, 212, 0.5); /* 小按钮底色 */
+	padding: 10px; /* 小按钮中文字到按钮边缘的距离 */
+	text-decoration: none;
+}
+
+#fold a:hover { /* 小按钮上有鼠标悬停时 */
+	background-color: #333; /* 小按钮的底色 */
+	color: #fff; /* 文字颜色 */
+}
+
+.navbar{
+  border-radius: 0;
+}
+
+.alert{
+  border-radius: 0;
 }
